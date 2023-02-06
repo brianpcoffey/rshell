@@ -1,0 +1,68 @@
+test cases
+
+ls -la; ls
+	expect 
+		ls -la
+		ls
+
+echo hi && echo hello
+	expect
+		echo hi
+		echo hello
+
+mkdir hi || echo cant make dir
+	expect
+		mkdir hi
+		echo cant make dir
+
+ls -la; echo "hello && hi && echo wazzup || echo this is an arg" && echo no || mkdir shut || cd no; git status; mkdir lksdglksjfkls;
+	expect
+		ls -la
+		echo "hello && hi && echo wazzup || echo this is an arg"
+		echo no
+		mkdir shut
+		cd no
+		git status
+		mkdir lksdglksjfkls
+
+
+(echo a && echo b) || (echo c && echo d)
+	expect
+		a\nb\n
+
+(echo a && echo b) && (echo c && echo d)
+	expect
+		a\nb\nc\nd\n
+
+(echo a || echo b) && (echo c || echo d)
+	expect
+		a\nc\n
+
+ls && ((echo a || echo b) && (echo c || echo d))
+
+ls && ((echo a || echo b) && (echo c || echo d)); echo g; ls; echo A && echo B; ls || ls
+
+ls && ((echo a && echo b) && (echo c && echo d))
+
+(echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls)
+	expect:
+		a\na\n (10 times)
+
+((echo a || ls) && (echo a || ls)) || (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls)
+
+(((((echo a || echo b) || echo c) && echo d) || echo e) && echo f) || echo g
+	expect:
+		a\nd\nf\n
+
+(((((echo a || echo b) || echo c) && echo d) || echo e) && echo f) || echo g; ls
+
+(echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls) && (echo a || ls)
+
+
+echo hi > out
+
+cat < out
+
+echo hi > out2 && cat < out3
+
+echo hi > out3 && ls && cat < out3 > out4
